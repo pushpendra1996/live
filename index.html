@@ -1,12 +1,839 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pushpendra Computer Typing Institute - Jarud</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section img {
+            height: 50px;
+            border-radius: 8px;
+        }
+
+        .institute-name h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .institute-name p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .contact-header {
+            text-align: right;
+        }
+
+        .contact-header a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 0.2rem 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-header a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200') center/cover;
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #764ba2;
+            margin: 1rem auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .course-card:hover::before {
+            top: -100%;
+            right: -100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .course-card .speed {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .course-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .course-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Enrollment Form */
+        .enrollment {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        .gcc-logo {
+            width: 80px;
+            height: auto;
+            margin: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contact-header {
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+        }
+
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="https://content.jdmagicbox.com/comp/amravati/dc/9999px721.x721.140326091408.y1e2dc/catalogue/pushpendra-typing-insitiute-jarud-amravati-typing-classes-8spbx808pz.jpg" alt="Pushpendra Institute Logo">
+                <div class="institute-name">
+                    <h1>Pushpendra Computer Typing Institute</h1>
+                    <p>Government Certified Courses</p>
+                </div>
+            </div>
+            <div class="contact-header">
+                <a href="tel:+919421738895">📞 +91 9421738895</a>
+                <a href="mailto:sanjaykalbende8@gmail.com">✉️ sanjaykalbende8@gmail.com</a>
+            </div>
+        </div>
+    </header>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Master Your Typing Skills</h2>
+        <p>Government Certified Computer Typing Courses (GCC-TBC)</p>
+        <a href="#enroll" class="cta-button">Enroll Now</a>
+    </section>
 
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to <strong>Pushpendra Computer Typing Institute</strong>, your trusted destination for professional typing education in Jarud. We specialize in Government Commercial Certificate (GCC) and Government Computer Typing Certificate (GCC-TBC) courses approved by Maharashtra State Examination Council (MSCE), Pune.</p>
+                    <br>
+                    <p>Our institute offers comprehensive training in English, Marathi, and Hindi typing with speeds ranging from 30 to 60 words per minute. With experienced instructors and modern infrastructure, we ensure that every student achieves certification and professional competency.</p>
+                    <br>
+                    <p>Located conveniently near the bus stop in Jarud, we provide a conducive learning environment with the latest technology and personalized attention to help you succeed in your typing career.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600" alt="Typing Class">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">Our Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>🇬🇧 English Typing</h3>
+                    <div class="speed">30 WPM</div>
+                    <ul>
+                        <li>✓ Government Certified</li>
+                        <li>✓ Beginner Friendly</li>
+                        <li>✓ GCC-TBC Certificate</li>
+                        <li>✓ Job Oriented</li>
+                    </ul>
+                </div>
+
+                <div class="course-card">
+                    <h3>🇬🇧 English Typing</h3>
+                    <div class="speed">40 WPM</div>
+                    <ul>
+                        <li>✓ Government Certified</li>
+                        <li>✓ Intermediate Level</li>
+                        <li>✓ GCC-TBC Certificate</li>
+                        <li>✓ Career Advancement</li>
+                    </ul>
+                </div>
+
+                <div class="course-card">
+                    <h3>🇮🇳 Marathi Typing</h3>
+                    <div class="speed">30 WPM</div>
+                    <ul>
+                        <li>✓ Government Certified</li>
+                        <li>✓ Devanagari Script</li>
+                        <li>✓ GCC-TBC Certificate</li>
+                        <li>✓ Regional Jobs</li>
+                    </ul>
+                </div>
+
+                <div class="course-card">
+                    <h3>🇮🇳 Marathi Typing</h3>
+                    <div class="speed">40 WPM</div>
+                    <ul>
+                        <li>✓ Government Certified</li>
+                        <li>✓ Advanced Skills</li>
+                        <li>✓ GCC-TBC Certificate</li>
+                        <li>✓ Professional Level</li>
+                    </ul>
+                </div>
+
+                <div class="course-card">
+                    <h3>🇮🇳 Hindi Typing</h3>
+                    <div class="speed">30 WPM</div>
+                    <ul>
+                        <li>✓ Government Certified</li>
+                        <li>✓ Devanagari Script</li>
+                        <li>✓ GCC-TBC Certificate</li>
+                        <li>✓ National Scope</li>
+                    </ul>
+                </div>
+
+                <div class="course-card">
+                    <h3>🇮🇳 Hindi Typing</h3>
+                    <div class="speed">40 WPM</div>
+                    <ul>
+                        <li>✓ Government Certified</li>
+                        <li>✓ Expert Training</li>
+                        <li>✓ GCC-TBC Certificate</li>
+                        <li>✓ Central Govt. Jobs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Certified Training</h3>
+                    <p>MSCE Pune approved institute providing government recognized certificates</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Expert Instructors</h3>
+                    <p>Experienced trainers with proven track record of student success</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">💻</div>
+                    <h3>Modern Lab</h3>
+                    <p>Well-equipped computer lab with latest software and technology</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">📚</div>
+                    <h3>Study Material</h3>
+                    <p>Comprehensive learning resources and practice materials provided</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Flexible Timing</h3>
+                    <p>Multiple batches available to suit your schedule</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">✅</div>
+                    <h3>100% Results</h3>
+                    <p>Dedicated support until you achieve certification success</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Institute</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600" alt="Computer Lab">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600" alt="Typing Practice">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600" alt="Students Learning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Form -->
+    <section class="enrollment" id="enroll">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Enroll Now</h2>
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    ✓ Your enrollment form has been submitted successfully! We'll contact you soon.
+                </div>
+                <div class="error-message" id="errorMessage">
+                    ✗ Please fill in all required fields correctly.
+                </div>
+                <form id="enrollmentForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Select Course *</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Choose a Course --</option>
+                            <option value="English 30 WPM">English Typing - 30 WPM</option>
+                            <option value="English 40 WPM">English Typing - 40 WPM</option>
+                            <option value="Marathi 30 WPM">Marathi Typing - 30 WPM</option>
+                            <option value="Marathi 40 WPM">Marathi Typing - 40 WPM</option>
+                            <option value="Hindi 30 WPM">Hindi Typing - 30 WPM</option>
+                            <option value="Hindi 40 WPM">Hindi Typing - 40 WPM</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Any questions or special requirements?"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Enrollment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Institute</h3>
+                <p>Pushpendra Computer Typing Institute is a government approved typing training center affiliated with MSCE Pune, providing quality education in English, Marathi, and Hindi typing.</p>
+                <div>
+                    <img src="https://mscepune.in/gcc/Assests/fav-logo.gif" alt="MSCE Logo" class="gcc-logo">
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#courses">Courses</a>
+                <a href="#enroll">Enroll Now</a>
+                <a href="https://mscepune.in/gcc/index_GCT.html" target="_blank">MSCE GCC Portal</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 Raut Complex, Near Bus Stop<br>Jarud - 444908<br>Maharashtra, India</p>
+                <p>📞 +91 9421738895</p>
+                <p>✉️ sanjaykalbende8@gmail.com</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Office Hours</h3>
+                <p>Monday - Saturday<br>9:00 AM - 7:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pushpendra Computer Typing Institute, Jarud. All Rights Reserved.</p>
+            <p>Affiliated with Maharashtra State Examination Council (MSCE), Pune</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            // Validate form
+            if (!form.checkValidity()) {
+                document.getElementById('errorMessage').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+                return;
+            }
+
+            // Create email content
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const course = formData.get('course');
+            const message = formData.get('message');
+
+            const subject = encodeURIComponent('New Enrollment - ' + name);
+            const body = encodeURIComponent(
+                'New Enrollment Request\n\n' +
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Phone: ' + phone + '\n' +
+                'Course: ' + course + '\n' +
+                'Message: ' + message + '\n\n' +
+                'Please contact this student for enrollment.'
+            );
+
+            // Open email client
+            window.location.href = 'mailto:sanjaykalbende8@gmail.com?subject=' + subject + '&body=' + body;
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            form.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.course-card, .feature-box, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
